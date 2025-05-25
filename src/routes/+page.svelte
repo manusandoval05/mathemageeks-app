@@ -8,9 +8,11 @@
 
   function submitLoginAttempt(event: Event){
     event.preventDefault();
-    if(!email.endsWith("@ciencias.unam.mx")){
-      error = "Se necesita un correo institucional";
-      return 
+
+    const validEmail = invoke("is_valid_email");
+    if(!validEmail){
+      error = "Se requiere un correo ciencias unam para utilizar la aplicación";
+      return; 
     }
     goto("/app");
   }
