@@ -6,17 +6,21 @@
   let email: string = $state("");
   let error: string = $state("");
 
-  function submitLoginAttempt(event: Event){
+  async function submitLoginAttempt(event: Event) {
     event.preventDefault();
 
-    const validEmail = invoke("is_valid_email");
-    if(!validEmail){
+    const validEmail = await invoke("is_valid_email", { email: email });
+    console.log(validEmail);
+    if (!validEmail) {
       error = "Se requiere un correo ciencias unam para utilizar la aplicación";
-      return; 
+      return;
     }
+
+    window.localStorage.setItem("email", email);
     goto("/app");
   }
 </script>
+
 <div
   class="w-full max-w-4xl gap-3 container mx-auto flex flex-col items-center justify-center"
 >
@@ -56,5 +60,8 @@
         </form>
       </div>
     </article>
+    <footer class="flex items-center justify-between gap-4 p-4">
+      <p>{error}</p>
+    </footer>
   </div>
 </div>

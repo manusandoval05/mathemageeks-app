@@ -2,9 +2,9 @@
 #[tauri::command]
 fn is_valid_email(email: &str) -> bool {
     if !email.ends_with("@ciencias.unam.mx") {
-        return true;  
+        return false;  
     }
-    return false; 
+    return true; 
 }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]

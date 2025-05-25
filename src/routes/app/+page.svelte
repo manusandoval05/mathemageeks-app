@@ -91,9 +91,11 @@
   async function callExpressionApi(expression: string): Promise<any> {
     console.log("Calling the API");
 
-    const res = await fetch("http://127.0.0.1:8000/get-expression", {
+    const email = window.localStorage.getItem("email");
+    const res = await fetch("https://mathemageeks-api-730571690390.northamerica-south1.run.app/get-expression", {
       method: "POST",
       headers: {
+        "Authorization": `Bearer ${email}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -161,7 +163,7 @@
             <button
               onclick={() => goToLevel(i)}
               class="opacity-60 hover:underline"
-              ><span>{levelName}</span></button
+              >{@html levelName}</button
             >
           </li>
           <li class="opacity-50" aria-hidden>&rsaquo;</li>
