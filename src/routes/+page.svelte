@@ -54,8 +54,5 @@
         </form>
       </div>
     </article>
-    <footer class="flex items-center justify-between gap-4 p-4">
-      <a href="/app"></a>
-    </footer>
   </div>
 </div>
